@@ -14,4 +14,5 @@ ans = []
 for i in range(1, N + 1):
   ans.append(math.comb(N - len(graph[i]) - 1, 3))
 
-print(' '.join(map(str, ans)))
+print(*ans)
+# print(' '.join(map(str, ans)))
