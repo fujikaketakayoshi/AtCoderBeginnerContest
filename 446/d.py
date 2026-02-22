@@ -15,9 +15,9 @@ Aset = sorted(set(A))
 # print(cnt)
 max_ans = 0
 for a in Aset:
-  ans = 1
   # print(a)
   for i in cnt[a]:
+    ans = 1
     idx = i
     v = a
     while v + 1 in cnt:
@@ -29,5 +29,5 @@ for a in Aset:
         v += 1
       else:
         break
-  max_ans = max(max_ans, ans)
+    max_ans = max(max_ans, ans)
 print(max_ans)
