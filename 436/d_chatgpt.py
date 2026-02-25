@@ -1,53 +1,41 @@
-import sys
-input = sys.stdin.readline
-from collections import deque,defaultdict
+from collections import deque, defaultdict
 
 H, W = map(int, input().split())
-grid = []
-warp = defaultdict(list)
-for h in range(H):
-  row = list(input().strip())
-  grid.append(row)
-  for w, r in enumerate(row):
-    if r.islower():
-      warp[r].append((h, w))
-# print(warp)
+grid = [list(input().strip()) for _ in range(H)]
 
-visited = [[False] * W for _ in range(H)]
+warp = defaultdict(list)
+for i in range(H):
+    for j in range(W):
+        if grid[i][j].islower():
+            warp[grid[i][j]].append((i, j))
+
+dist = [[-1]*W for _ in range(H)]
+dist[0][0] = 0
+
+q = deque([(0,0)])
 used_warp = set()
 
-dy = [-1, 0, 1, 0]
-dx = [0, 1, 0, -1]
-
-q = deque()
-q.append((0, 0, 0))
-visited[0][0] = True
-min_cost = float('INF')
 while q:
-  c, h, w = q.popleft()
-  if h == H - 1 and w == W - 1:
-    print(c)
-    sys.exit()
-  # print(h, w, c)
-  key = grid[h][w]
-  if key.islower() and key not in used_warp:
-    used_warp.add(key)
-    for nh, nw in warp[key]:
-      if nh == h and nw == w:
-        continue
-      if not visited[nh][nw]:
-        q.append((c + 1, nh, nw))
-        visited[nh][nw] = True
-        continue
-  
-  for d in range(4):
-    nh = h + dy[d]
-    nw = w + dx[d]
-    if not (0 <= nh <= H - 1) or not (0 <= nw <= W - 1):
-      continue
-    if grid[nh][nw] == '#' or visited[nh][nw]:
-      continue
-    q.append((c + 1, nh, nw))
-    visited[nh][nw] = True
+    y, x = q.popleft()
+    
+    if (y, x) == (H-1, W-1):
+        print(dist[y][x])
+        exit()
+    
+    # ワープ
+    c = grid[y][x]
+    if c.islower() and c not in used_warp:
+        used_warp.add(c)
+        for ny, nx in warp[c]:
+            if dist[ny][nx] == -1:
+                dist[ny][nx] = dist[y][x] + 1
+                q.append((ny, nx))
+    
+    # 4方向
+    for dy, dx in [(1,0),(-1,0),(0,1),(0,-1)]:
+        ny, nx = y+dy, x+dx
+        if 0<=ny<H and 0<=nx<W and grid[ny][nx] != '#' and dist[ny][nx]==-1:
+            dist[ny][nx] = dist[y][x] + 1
+            q.append((ny,nx))
 
 print(-1)
