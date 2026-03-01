@@ -1,6 +1,9 @@
 S = input().strip()
 T = input().strip()
 
+print(S.replace('A',''),T.replace('A',''))
+
+
 if S.replace('A','') != T.replace('A',''):
     print(-1)
     exit()
@@ -19,5 +22,7 @@ def f(s):
 
 Sa = f(S)
 Ta = f(T)
+
+print(Sa, Ta)
 
 print(sum(abs(x-y) for x,y in zip(Sa,Ta)))
