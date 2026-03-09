@@ -18,7 +18,8 @@ ans = 0
 for a in A:
     for l in range(1, 11):
         x = a * pow(10, l) % M
-        need = (M - x) % M
+        need = 0 if x == 0 else M - x
+        # need = (M - x) % M
         ans += cnt[(l, need)]
 
 print(ans)
