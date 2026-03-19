@@ -13,9 +13,11 @@ def count_b_less_than_B():
         if S[r] == 'b':
             cntb += 1
         while cntb >= B:
+            print(l, r, cntb, S[l:r + 1], cntb < B)
             if S[l] == 'b':
                 cntb -= 1
             l += 1
+        print(l, r, cntb, S[l:r + 1], cntb < B)
         res += (r - l + 1)
     return res
 
@@ -47,5 +49,4 @@ def count_a_less_and_b_less():
         
         res += (r - l + 1)
     return res
-
 print(count_b_less_than_B() - count_a_less_and_b_less())
