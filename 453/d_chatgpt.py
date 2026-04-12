@@ -16,6 +16,8 @@ for i in range(H):
         elif c == 'G':
             goal = (i, j)
 
+# print(grid)
+
 dy = [-1, 0, 1, 0]
 dx = [0, 1, 0, -1]
 dc = "URDL"
