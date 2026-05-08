@@ -19,14 +19,11 @@ for _ in range(Q):
   V = int(V)
   # print(c, X, V)
   i = X - 1
+  prev_min = min(A[i], B[i])
   if c == 'A':
-    prev_min = min(A[i], B[i])
     A[i] = V
-    now_min = min(A[i], B[i])
-    ans += now_min - prev_min
   else:
-    prev_min = min(A[i], B[i])
     B[i] = V
-    now_min = min(A[i], B[i])
-    ans += now_min - prev_min
+  now_min = min(A[i], B[i])
+  ans += now_min - prev_min
   print(ans)
