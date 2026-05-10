@@ -9,7 +9,10 @@ def ok(x):
     cnt = 0
     for i, a in enumerate(A, start=1):
         if a < x:
-            cnt += (x - a + i - 1) // i
+            #cnt += (x - a + i - 1) // i
+            cnt += (x - a) // i
+            if (x - a) % i != 0:
+                cnt += 1
             # cnt += math.ceil((x-a)/i)
         if cnt > K:
             return False
