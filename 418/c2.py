@@ -11,7 +11,7 @@ total = 0
 for a in A:
   total += a
   sumA.append(total)
-print(A, sumA)
+# print(A, sumA)
 
 for _ in range(Q):
   B = int(input())
