@@ -6,7 +6,6 @@ N, K, M = map(int, input().split())
 # print(N, K, M)
 
 VC = []
-# Cs = [[] for _ in range(N + 1)]
 Cmax = defaultdict(int)
 Cidx = defaultdict(int)
 for n in range(N):
