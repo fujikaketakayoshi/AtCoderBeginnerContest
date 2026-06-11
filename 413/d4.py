@@ -46,13 +46,9 @@ for _ in range(T):
         # print(not(all(s == '-' for s in signs) or all(s == '+' for s in signs)))
         if not(all(s == '-' for s in signs) or all(s == '+' for s in signs)):
             if signs[0] == '-':
-                if not(all(signs[i] == '-' for i in range(0, N, 2))):
-                    ok = False
-                if ok and not(all(signs[i] == '+' for i in range(1, N, 2))):
+                if not(all(signs[i] == '-' for i in range(0, N, 2))) or not(all(signs[i] == '+' for i in range(1, N, 2))):
                     ok = False
             else:
-                if not(all(signs[i] == '+' for i in range(0, N, 2))):
-                    ok = False
-                if ok and not(all(signs[i] == '-' for i in range(1, N, 2))):
+                if not(all(signs[i] == '+' for i in range(0, N, 2))) or not(all(signs[i] == '-' for i in range(1, N, 2))):
                     ok = False
     print('Yes' if ok else 'No')
