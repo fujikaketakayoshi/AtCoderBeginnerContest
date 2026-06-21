@@ -27,5 +27,5 @@ for l, r in LR:
     min_dis = min(min_dis, l - last_r)
   last_r = r
 
-print(cnt)
+print(cnt, min_dis)
 print(min_dis if cnt >= K else -1)
