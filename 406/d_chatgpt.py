@@ -21,15 +21,13 @@ for _ in range(Q):
   if q == 1:
     x = xy
     # print(xgars[x].keys())
-    remove_x = len(xgars[x])
+    print(len(xgars[x]))
     for y in xgars[x]:
       ygars[y].remove(x)
     del xgars[x]
-    print(remove_x)
   else:
     y = xy
-    remove_y = len(ygars[y])
+    print(len(ygars[y]))
     for x in ygars[y]:
       xgars[x].remove(y)
     del ygars[y]
-    print(remove_y)
