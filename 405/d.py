@@ -4,7 +4,6 @@ from collections import deque
 
 H, W = map(int, input().split())
 # print(H, W)
-a
 grid = []
 Es = []
 visited = [[False] * W for _ in range(H)]
