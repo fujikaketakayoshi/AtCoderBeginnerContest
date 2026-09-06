@@ -28,7 +28,7 @@ for _ in range(T):
         saved += diff[k - 1]
 
         # Bをk個買うのに不足するクーポン
-        extra = max(0, 2 * k - N)
+        extra = max(0, k - (N - k))
 
         cost = base - saved + extra * min_a
         ans = min(ans, cost)
