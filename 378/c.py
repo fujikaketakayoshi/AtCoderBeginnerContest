@@ -1,17 +1,14 @@
 import sys
 input = sys.stdin.readline
-from collections import defaultdict
 
 N = int(input())
 A = list(map(int, input().split()))
 # print(N, A)
 
 B = []
-cnt = defaultdict(int)
+cnt = {}
 for i in range(N):
-  idx = -1
-  if A[i] in cnt:
-    idx = cnt[A[i]]
+  idx = cnt[A[i]] if A[i] in cnt else -1
   cnt[A[i]] = i + 1
   B.append(idx)
 
