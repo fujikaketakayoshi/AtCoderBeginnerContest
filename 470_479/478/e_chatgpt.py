@@ -41,7 +41,7 @@ for i in range(N):
             stack.append((v, False))
 print(order)
 
-# 2. 逆グラフで強連結成分を求める
+# 2. 逆グラフで強連結成分(SCC)を求める
 comp = [-1] * N
 cid = 0
 
