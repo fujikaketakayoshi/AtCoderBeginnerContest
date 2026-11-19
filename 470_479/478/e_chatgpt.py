@@ -21,27 +21,24 @@ visited = [False] * N
 order = []
 
 for i in range(N):
-    if visited[i]:
+  stack = [(i, False)]
+
+  while stack:
+    u, finished = stack.pop()
+
+    if finished:
+        order.append(u)
         continue
 
-    stack = [i]
+    if visited[u]:
+        continue
 
-    while stack:
-        u = stack.pop()
+    visited[u] = True
+    stack.append((u, True))
 
-        if u < 0:
-            order.append(~u)
-            continue
-
-        if visited[u]:
-            continue
-
-        visited[u] = True
-        stack.append(~u)
-
-        for v in g[u]:
-            if not visited[v]:
-                stack.append(v)
+    for v in g[u]:
+        if not visited[v]:
+            stack.append((v, False))
 print(order)
 
 # 2. 逆グラフで強連結成分を求める
