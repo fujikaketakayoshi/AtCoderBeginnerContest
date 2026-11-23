@@ -17,23 +17,30 @@ for _ in range(M):
 
 q = deque()
 q.append((0, 0, -1))
-first = [-1] * N
+first = [-2] * N
 second = [False] * N
 
+first[0] = -1
+q = deque([(0, 0, -1)])
+
 while q:
-  u, cnt, prec = q.popleft()
-  if first[u] == -1:
-    first[u] = prec
-  elif prec == first[u] or second[u]:
-    continue
-  else:
-    second[u] = True
-  if u == N - 1:
-    print(cnt)
-    exit()
-  for v, c in graph[u]:
-    if c == prec:
-      continue
-    q.append((v, cnt + 1, c))
+    u, cnt, prec = q.popleft()
+
+    if u == N - 1:
+        print(cnt)
+        exit()
+
+    for v, c in graph[u]:
+        if c == prec:
+            continue
+
+        if first[v] == -2:
+            first[v] = c
+        elif c == first[v] or second[v]:
+            continue
+        else:
+            second[v] = True
+
+        q.append((v, cnt + 1, c))
 
 print(-1)
